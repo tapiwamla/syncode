@@ -41,9 +41,3 @@ In case you want to fix it yourself, feel free to make a pull request.
 ## Future Scope 
 - Add syntax highlighting for multiple languages
 - Add support for multiple themes (currently using Dracula theme)
-
-## About Me
-I am Mohd Mohitur Rahaman, a tech geek, currently pursuing a Master's in Computer Applications from KIIT, Bhubaneswar. And with a deep passion for coding and a strong love for science & technology, I am dedicated to honing my skills and achieving proficiency as a developer.
-
-## Connect with me
-- [LinkedIn](https://www.linkedin.com/in/mohitur02/)
