@@ -38,3 +38,11 @@ In case you want to fix it yourself, feel free to make a pull request.
 ## Future Scope 
 - Add syntax highlighting for multiple languages
 - Add support for multiple themes (currently using Dracula theme)
+
+
+## Testing Responsibilities
+- Ben: Server
+- Darys: Actions
+- Nelius: Client
+- Joyce: Socket
+- Tapiwanashe: Home
