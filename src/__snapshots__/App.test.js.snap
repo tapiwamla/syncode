@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<div>
+  <div>
+    <div
+      style="position: fixed; z-index: 9999; top: 16px; left: 16px; right: 16px; bottom: 16px; pointer-events: none;"
+    />
+  </div>
+  <div
+    class="homePageWrapper"
+  >
+    <div
+      class="formWrapper"
+    >
+      <img
+        alt="code-sync-logo"
+        class="homePageLogo"
+        src="/logo.png"
+      />
+      <h4
+        class="mainLabel"
+      >
+        Paste invitation ROOM ID
+      </h4>
+      <div
+        class="inputGroup"
+      >
+        <input
+          class="inputBox"
+          placeholder="ROOM ID"
+          type="text"
+          value=""
+        />
+        <input
+          class="inputBox"
+          placeholder="USERNAME"
+          type="text"
+          value=""
+        />
+        <button
+          class="btn joinBtn"
+        >
+          JOIN
+        </button>
+        <span
+          class="createInfo"
+        >
+          If you don't have an invite code then create  
+          <a
+            class="createNewBtn"
+            href="google.com"
+          >
+            new room
+          </a>
+        </span>
+      </div>
+    </div>
+    <footer>
+      <h4>
+        Being Created By  
+        <a
+          href="https://github.com/tapiwamla"
+          rel="noreferrer"
+          target="_blank"
+        >
+          NASHE
+        </a>
+      </h4>
+    </footer>
+  </div>
+</div>
+`;
