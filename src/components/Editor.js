@@ -7,7 +7,7 @@ import 'codemirror/addon/edit/closetag';
 import 'codemirror/addon/edit/closebrackets';
 import ACTIONS from '../actions/Actions';
 
-function Editor({ socketRef, roomId, onCodeChange }) {
+function Editor({socketRef, roomId, onCodeChange }) {
     const editorRef = useRef(null);
 
     useEffect(() => {
@@ -19,7 +19,9 @@ function Editor({ socketRef, roomId, onCodeChange }) {
             autoCloseTags: true,
             autoCloseBrackets: true,
             lineNumbers: true,
-        });
+        },[]);
+        // Create a local variable to capture the current socketRef value
+        const currentSocketRef = socketRef.current;
 
         // Handle local code changes and emit to other clients
         const handleCodeChange = (instance, changes) => {
@@ -43,8 +45,8 @@ function Editor({ socketRef, roomId, onCodeChange }) {
             editorRef.current.off('change', handleCodeChange);
             editorRef.current.toTextArea(); // Clean up the CodeMirror instance
         };
-    }, []);
-
+    }, [socketRef, onCodeChange, roomId]);//include socketref and oncodechange as dependencies
+    
     useEffect(() => {
         // Listen for code changes from other clients
         if (socketRef.current) {
@@ -60,7 +62,7 @@ function Editor({ socketRef, roomId, onCodeChange }) {
                 socketRef.current.off(ACTIONS.CODE_CHANGE);
             }
         };
-    }, [ socketRef.current ]);
+    }, [socketRef]);
 
     return <textarea id="realtimeEditor"></textarea>;
 }
