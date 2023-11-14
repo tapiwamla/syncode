@@ -1,6 +1,11 @@
 import React from 'react';
 import Avatar from 'react-avatar';
 
+
+
+const add = (a, b) => {
+    return a + b;
+};
 const Client = ({ username, online }) => {
     return (
         <>
@@ -13,4 +18,4 @@ const Client = ({ username, online }) => {
     )
 }
 
-export default Client;
+export {Client, add};
