@@ -28,3 +28,13 @@ describe('initSocket', () => {
   });
 });
 
+it('should handle errors during socket initialization', async () => {
+  // Mocking io to throw an error
+  io.mockImplementationOnce(() => {
+      throw new Error('Socket initialization failed');
+  });
+
+  // Ensure that the function rejects with the expected error
+  await expect(initSocket()).rejects.toThrow('Socket initialization failed');
+});
+
