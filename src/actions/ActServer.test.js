@@ -10,7 +10,7 @@ const socketUrl = 'http://localhost:5000';
 describe('Server.js Tests', () => {
     jest.setTimeout(8000);
 
-    let io, serverSocket, clientSocket, client2;
+    let io, serverSocket, client2;
     const userSocketMap = {};
     const rid = uuidV4();
 
@@ -38,8 +38,17 @@ describe('Server.js Tests', () => {
         io.close();
     });
 
+    const handleAction = (action, handler) => {
+        serverSocket.on(action, handler);
+        client2.on(action, ({ socketId, username }) => {
+            const user = userSocketMap[socketId];
+            expect(user).toBe(username);
+            done();
+        });
+    };
+
     test('Server adding client', (done) => {
-        serverSocket.on(ACTIONS.JOIN, ({ roomId, username }) => {
+        handleAction(ACTIONS.JOIN, ({ roomId, username }) => {
             userSocketMap[serverSocket.id] = username;
             serverSocket.join(roomId);
 
@@ -62,16 +71,10 @@ describe('Server.js Tests', () => {
             rid,
             username: "user1",
         });
-
-        client2.on(ACTIONS.JOINED, ({ clients, username, socketId }) => {
-            const userJoin = userSocketMap[socketId];
-            expect(userJoin).toBe("user1");
-            done();
-        });
     });
 
     test('Can delete user', (done) => {
-        serverSocket.on(ACTIONS.LEAVE_ROOM, ({ roomId, username }) => {
+        handleAction(ACTIONS.LEAVE_ROOM, ({ roomId, username }) => {
             const leavingSocketId = Object.keys(userSocketMap).find(key => userSocketMap[key] === username);
 
             if (leavingSocketId) {
@@ -87,12 +90,6 @@ describe('Server.js Tests', () => {
         client2.emit(ACTIONS.LEAVE_ROOM, {
             rid,
             username: "user1"
-        });
-
-        client2.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
-            const userLeft = userSocketMap[socketId];
-            expect(userLeft).toBeUndefined();
-            done();
         });
     });
 });
