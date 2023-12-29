@@ -41,8 +41,8 @@ In case you want to fix it yourself, feel free to make a pull request.
 
 
 ## Testing Responsibilities
+- Tapiwanashe: Sockets
 - Ben: Server
 - Darys: Actions
 - Nelius: Client
-- Joyce: Socket
-- Tapiwanashe: Home
+- Joyce: Files
